@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Navbar } from "components";
+import { Footer, Navbar } from "components";
 import { Homepage } from "pages";
 
 const App = () => {
@@ -10,6 +10,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Homepage />} />
       </Routes>
+      <Footer />
     </Fragment>
   );
 };
