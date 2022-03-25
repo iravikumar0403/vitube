@@ -39,7 +39,7 @@ export const Navbar = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <button className="btn icon-only">
+          <button className="btn icon-only text-light">
             <i className="fa fa-search"></i>
           </button>
         </div>
@@ -47,7 +47,7 @@ export const Navbar = () => {
         {"user" ? (
           <div className="dropdown">
             <button
-              className="btn icon-only"
+              className="btn icon-only text-light"
               onClick={() => {
                 setIsOpen((isOpen) => !isOpen);
               }}

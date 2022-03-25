@@ -1,3 +1,68 @@
-.justify-center{
-    justify-content: center;
+:root {
+  --bg-gradient: #0658b6 0%, #055092 6%, #000c24 100%;
+  --primary-color: #0099f1;
+  --primary-text: #ffffff;
+  --secondary-text: #fefefe;
+  --background-primary: #0886f2;
+  --background-secondary: #0079ff;
+  line-height: 1.2;
+}
+
+#root {
+  min-height: 100vh;
+  background-color: var(--background-secondary);
+  background: radial-gradient(circle, var(--bg-gradient));
+}
+
+.container {
+  max-width: 1080px;
+  padding: 2rem 1rem;
+  margin: auto;
+}
+
+.card {
+  min-width: 20rem;
+}
+
+.card-media {
+  position: relative;
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card-footer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-footer .avatar {
+  min-width: 3rem;
+  align-self: flex-start;
+}
+
+.video-grid {
+  display: flex;
+  gap: 1rem;
+  overflow-x: scroll;
+  padding-bottom: 1rem;
+}
+
+/* to-do: move these syles to component library utility */
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-justify {
+  text-align: justify;
 }
