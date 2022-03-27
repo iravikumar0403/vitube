@@ -1,3 +1,10 @@
+export { CategoryGrid } from "./CategoryGrid";
 export { Footer } from "./Footer";
+export { History } from "./History";
+export { Layout } from "./Layout";
+export { LikedVideos } from "./LikedVideos";
 export { Navbar } from "./Navbar";
+export { Playlist } from "./Playlist";
+export { Sidebar } from "./Sidebar";
 export { VideoCard } from "./VideoCard";
+export { WatchLater } from "./WatchLater";

@@ -8,22 +8,22 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "Beginners",
+    categoryName: "Get Started",
     slug: "video-editing-for-beginners",
   },
   {
     _id: uuid(),
-    categoryName: "Final cut pro X",
+    categoryName: "Learn Final cut pro X",
     slug: "final-cut-pro-x",
   },
   {
     _id: uuid(),
-    categoryName: "Filmora X",
+    categoryName: "Learn Filmora X",
     slug: "filmora-x",
   },
   {
     _id: uuid(),
-    categoryName: "After effects",
+    categoryName: "Learn After effects",
     slug: "after-effects",
   },
 ];
