@@ -1,26 +1,40 @@
 import { NavLink } from "react-router-dom";
 
 export const Sidebar = () => {
+  const navlinks = [
+    {
+      title: "Home",
+      path: "/",
+    },
+    {
+      title: "Explore",
+      path: "/explore",
+    },
+    {
+      title: "Playlist",
+      path: "/playlist",
+    },
+    {
+      title: "Watch Later",
+      path: "/watchlater",
+    },
+    {
+      title: "Liked Videos",
+      path: "/liked",
+    },
+    {
+      title: "History",
+      path: "/history",
+    },
+  ];
+
   return (
     <div className="sidebar">
-      <NavLink className="nav-link" to="/">
-        Home
-      </NavLink>
-      <NavLink className="nav-link" to="/explore">
-        Explore
-      </NavLink>
-      <NavLink className="nav-link" to="/playlist">
-        Playlist
-      </NavLink>
-      <NavLink className="nav-link" to="/watchlater">
-        Watch Later
-      </NavLink>
-      <NavLink className="nav-link" to="/liked">
-        Liked Videos
-      </NavLink>
-      <NavLink className="nav-link" to="/history">
-        History
-      </NavLink>
+      {navlinks.map(({ title, path }) => (
+        <NavLink className="nav-link" to={path}>
+          {title}
+        </NavLink>
+      ))}
     </div>
   );
 };
