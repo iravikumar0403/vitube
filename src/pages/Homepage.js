@@ -1,6 +1,6 @@
 import landingImage from "asset/landing-page.png";
 import { CategoryGrid } from "components";
-import { useCategories } from "context/categories-context";
+import { useCategories } from "context";
 
 export const Homepage = () => {
   const { categories } = useCategories();

@@ -1,5 +1,5 @@
 import { VideoCard } from "components";
-import { useVideos } from "context/videos-context";
+import { useVideos } from "context";
 
 export const ExplorePage = () => {
   const { videos } = useVideos();
