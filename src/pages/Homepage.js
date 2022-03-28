@@ -1,7 +1,10 @@
 import landingImage from "asset/landing-page.png";
-import { VideoCard } from "components";
+import { CategoryGrid } from "components";
+import { useCategories } from "context";
 
 export const Homepage = () => {
+  const { categories } = useCategories();
+
   return (
     <main className="main container">
       <section className="grid grid-50-50 align-center">
@@ -15,15 +18,8 @@ export const Homepage = () => {
         </div>
         <img src={landingImage} alt="" />
       </section>
-      {[...Array(4).keys()].map(() => (
-        <section className="container">
-          <h2>Category name</h2>
-          <div className="video-grid">
-            {[...Array(8).keys()].map(() => (
-              <VideoCard />
-            ))}
-          </div>
-        </section>
+      {categories.map((category) => (
+        <CategoryGrid key={category._id} category={category} />
       ))}
     </main>
   );

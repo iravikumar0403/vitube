@@ -24,7 +24,7 @@ export const Footer = () => {
       </p>
       <ul className="list inline justify-center">
         {footerLinks.map((item) => (
-          <li className="nav-menu-item">
+          <li key={item.link} className="nav-menu-item">
             <a
               className="fw-bold"
               href={item.link}

@@ -21,12 +21,6 @@ export const Navbar = () => {
               <img loading="lazy" src={logo} alt="logo" />
             </Link>
           </li>
-          <li className="nav-menu-item mx-1">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="nav-menu-item mx-1">
-            <Link to="products">Explore</Link>
-          </li>
         </ul>
       </div>
       <div className="nav-section right nav-menu">

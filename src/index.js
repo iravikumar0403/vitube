@@ -5,6 +5,7 @@ import App from "App";
 import "index.css";
 import "scrollbar.css";
 import { makeServer } from "server";
+import { StateProvider } from "context/StateProvider";
 
 // Call make Server
 makeServer();
@@ -12,7 +13,9 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <StateProvider>
+        <App />
+      </StateProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

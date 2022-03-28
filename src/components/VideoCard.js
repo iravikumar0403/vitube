@@ -1,7 +1,9 @@
 import playIcon from "asset/playIcon.svg";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { getInitials } from "utils";
 
-export const VideoCard = () => {
+export const VideoCard = ({ video }) => {
+  const { _id, title, creator, views } = video;
   return (
     <div className="card">
       <div className="card-media">
@@ -10,18 +12,20 @@ export const VideoCard = () => {
         </div>
         <img
           className="img-responsive img-rounded"
-          src="https://picsum.photos/800/400"
+          src={`https://i.ytimg.com/vi/${_id}/hq720.jpg`}
           alt="card media"
         />
       </div>
       <div className="card-body">
-        <p className="card-title fs-1 m-0">Card Title Card Title</p>
+        <p className="card-title fs-1 m-0">
+          {title.length > 50 ? title.substring(0, 50) + "..." : title}
+        </p>
       </div>
       <div className="card-footer">
-        <div style={{ display: "flex", gap: "0.5rem" }}>
-          <div className="avatar avatar-xs">AB</div>
+        <div className="flex">
+          <div className="avatar avatar-xs">{getInitials(creator)}</div>
           <div>
-            <p className="text-muted">1k views</p>
+            <p className="text-muted">{views} views</p>
           </div>
         </div>
         <button className="btn">

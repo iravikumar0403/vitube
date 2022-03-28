@@ -1,15 +1,20 @@
-import { Fragment } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Fragment, useEffect } from "react";
+import { useLocation, useRoutes } from "react-router-dom";
 import { Footer, Navbar } from "components";
-import { Homepage } from "pages";
+import { routes } from "config";
 
 const App = () => {
+  const routesElement = useRoutes(routes);
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <Fragment>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-      </Routes>
+      {routesElement}
       <Footer />
     </Fragment>
   );
