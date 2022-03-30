@@ -4,7 +4,6 @@ export { History } from "./History";
 export { Layout } from "./Layout";
 export { LikedVideos } from "./LikedVideos";
 export { Navbar } from "./Navbar";
-export { Playlist } from "./Playlist";
 export { RequireAuth } from "./RequireAuth";
 export { Sidebar } from "./Sidebar";
 export { VideoCard } from "./VideoCard";

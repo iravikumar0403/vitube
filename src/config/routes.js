@@ -2,12 +2,11 @@ import {
   History,
   Layout,
   LikedVideos,
-  Playlist,
   WatchLater,
   RequireAuth,
 } from "components";
 import MockmanEs from "mockman-js";
-import { ExplorePage, Homepage, Login, Signup } from "pages";
+import { ExplorePage, Homepage, Login, Signup, Playlist } from "pages";
 
 export const routes = [
   {

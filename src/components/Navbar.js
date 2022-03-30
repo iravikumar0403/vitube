@@ -52,10 +52,9 @@ export const Navbar = () => {
         </div>
 
         {user ? (
-          <div className="dropdown">
+          <div className="dropdown" ref={dropdownRef}>
             <button
               className="btn icon-only text-light"
-              ref={dropdownRef}
               onClick={() => {
                 setIsOpen((isOpen) => !isOpen);
               }}

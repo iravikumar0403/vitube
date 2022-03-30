@@ -38,6 +38,7 @@ nav {
 .main {
   border-left: 1px solid var(--divider-color);
   min-height: calc(100vh - 12.15rem);
+  width: 100%;
 }
 
 .card {
@@ -110,6 +111,7 @@ nav {
   flex-grow: 4;
   max-width: 350px;
   padding: 2rem;
+  margin: auto;
 }
 
 .form > div {
