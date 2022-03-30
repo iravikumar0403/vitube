@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { PlaylistVideoCard } from "components/PlaylistVideoCard";
@@ -38,9 +38,16 @@ export const PlaylistListing = () => {
       </div>
       <hr />
       <div className="playlist-listing">
-        {playlist.videos.map((video) => (
-          <PlaylistVideoCard video={video} />
-        ))}
+        {playlist.videos.length > 0 ? (
+          playlist.videos.map((video) => <PlaylistVideoCard video={video} />)
+        ) : (
+          <p className="my-5">
+            No videos added to this list.{" "}
+            <Link to="/explore" className="link">
+              Explore videos
+            </Link>
+          </p>
+        )}
       </div>
     </div>
   );
