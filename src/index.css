@@ -89,6 +89,28 @@ nav {
   box-shadow: 0px 0px 3px var(--divider-color);
 }
 
+.form {
+  align-items: center;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 4;
+  max-width: 350px;
+  padding: 2rem;
+}
+
+.form > div {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+}
+
+.input-icon:focus-within {
+  border-color: var(--primary-color);
+}
+
 /* to-do: move these syles to component library utility */
 .align-center {
   align-items: center;

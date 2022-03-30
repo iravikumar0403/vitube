@@ -1,15 +1,19 @@
 import { useState } from "react";
 import logo from "asset/logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { logout } from "services";
+import { useAuth } from "context/auth-context";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { dispatch } = useAuth();
 
   const handleLogoutClick = () => {
     setIsOpen(false);
+    logout(dispatch);
   };
 
   return (
