@@ -145,10 +145,6 @@ nav {
   text-align: justify;
 }
 
-.pos-rel {
-  position: relative;
-}
-
 .flex {
   display: flex;
   gap: 0.5rem;
