@@ -7,6 +7,7 @@ import {
 } from "components";
 import MockmanEs from "mockman-js";
 import { ExplorePage, Homepage, Login, Signup, Playlist } from "pages";
+import { PlaylistListing } from "pages/PlaylistListing";
 
 export const routes = [
   {
@@ -36,6 +37,10 @@ export const routes = [
           {
             path: "/playlist",
             element: <Playlist />,
+          },
+          {
+            path: `/playlist/:playlist_id`,
+            element: <PlaylistListing />,
           },
           {
             path: "/watchlater",

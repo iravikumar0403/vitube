@@ -5,7 +5,7 @@ import { useAuth } from "./auth-context";
 const PlaylistContext = createContext();
 
 const PlaylistProvider = ({ children }) => {
-  const [playlist, setPlaylist] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
   const { user } = useAuth();
 
   useEffect(() => {
@@ -14,14 +14,13 @@ const PlaylistProvider = ({ children }) => {
         const {
           data: { playlists },
         } = await axios.get("api/user/playlists");
-        console.log(playlists);
-        setPlaylist(playlists);
+        setPlaylists(playlists);
       })();
     }
   }, [user]);
 
   return (
-    <PlaylistContext.Provider value={{ playlist, setPlaylist }}>
+    <PlaylistContext.Provider value={{ playlists, setPlaylists }}>
       {children}
     </PlaylistContext.Provider>
   );
