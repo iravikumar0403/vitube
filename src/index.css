@@ -27,6 +27,19 @@ nav {
   top: 0;
 }
 
+.nav-menu-item .active {
+  color: var(--primary-color);
+}
+
+.layout {
+  display: flex;
+}
+
+.main {
+  border-left: 1px solid var(--divider-color);
+  min-height: calc(100vh - 12.15rem);
+}
+
 .card {
   min-width: 20rem;
 }
@@ -113,6 +126,10 @@ nav {
 
 .dropdown-item:hover {
   background-color: var(--background-secondary);
+}
+
+.footer {
+  box-shadow: 0px 0px 2px var(--divider-color);
 }
 
 /* to-do: move these syles to component library utility */
