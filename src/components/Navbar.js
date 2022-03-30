@@ -1,15 +1,22 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import logo from "asset/logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { logout } from "services";
+import { useAuth } from "context/auth-context";
+import { useOutsideClick } from "hooks";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { user, dispatch } = useAuth();
+  const dropdownRef = useRef();
+  useOutsideClick(dropdownRef, () => setIsOpen(false), isOpen);
 
   const handleLogoutClick = () => {
     setIsOpen(false);
+    logout(dispatch);
   };
 
   return (
@@ -38,10 +45,11 @@ export const Navbar = () => {
           </button>
         </div>
 
-        {"user" ? (
+        {user ? (
           <div className="dropdown">
             <button
               className="btn icon-only text-light"
+              ref={dropdownRef}
               onClick={() => {
                 setIsOpen((isOpen) => !isOpen);
               }}

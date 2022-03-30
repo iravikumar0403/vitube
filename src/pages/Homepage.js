@@ -1,8 +1,10 @@
 import landingImage from "asset/landing-page.png";
 import { CategoryGrid } from "components";
 import { useCategories } from "context";
+import { useDocumentTitle } from "hooks";
 
 export const Homepage = () => {
+  useDocumentTitle("ViTube");
   const { categories } = useCategories();
 
   return (
