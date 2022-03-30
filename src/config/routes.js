@@ -6,8 +6,14 @@ import {
   RequireAuth,
 } from "components";
 import MockmanEs from "mockman-js";
-import { ExplorePage, Homepage, Login, Signup, Playlist } from "pages";
-import { PlaylistListing } from "pages/PlaylistListing";
+import {
+  ExplorePage,
+  Homepage,
+  Login,
+  Signup,
+  Playlist,
+  PlaylistListing,
+} from "pages";
 
 export const routes = [
   {
