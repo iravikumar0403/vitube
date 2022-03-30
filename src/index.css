@@ -111,6 +111,10 @@ nav {
   border-color: var(--primary-color);
 }
 
+.dropdown-item:hover {
+  background-color: var(--background-secondary);
+}
+
 /* to-do: move these syles to component library utility */
 .align-center {
   align-items: center;
