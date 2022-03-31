@@ -13,7 +13,7 @@ const PlaylistProvider = ({ children }) => {
       (async () => {
         const {
           data: { playlists },
-        } = await axios.get("api/user/playlists");
+        } = await axios.get("/api/user/playlists");
         setPlaylists(playlists);
       })();
     }

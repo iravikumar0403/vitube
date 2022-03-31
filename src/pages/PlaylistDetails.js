@@ -3,10 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { PlaylistVideoCard } from "components/PlaylistVideoCard";
+import { useDocumentTitle } from "hooks";
 
-export const PlaylistListing = () => {
+export const PlaylistDetails = () => {
   const [playlist, setPlaylist] = useState(null);
   const { playlist_id } = useParams();
+  useDocumentTitle(!playlist ? "ViTube" : `${playlist.title} - ViTube`);
 
   useEffect(() => {
     if (playlist_id) {
@@ -20,7 +22,7 @@ export const PlaylistListing = () => {
   }, [playlist_id]);
 
   if (!playlist) {
-    return "loading";
+    return <p className="text-center">Loading...</p>;
   }
 
   return (
@@ -39,7 +41,9 @@ export const PlaylistListing = () => {
       <hr />
       <div className="playlist-listing">
         {playlist.videos.length > 0 ? (
-          playlist.videos.map((video) => <PlaylistVideoCard video={video} />)
+          playlist.videos.map((video) => (
+            <PlaylistVideoCard key={video._id} video={video} />
+          ))
         ) : (
           <p className="my-5">
             No videos added to this list.{" "}

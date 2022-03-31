@@ -5,15 +5,6 @@
 
 export const videos = [
   {
-    _id: "oS1BlGm91Bs",
-    title: "Learn Video Editing Full Course For Beginners Step By Step Guide",
-    description:
-      "Learn Video Editing Full Course For Beginners video editing tutorial in hindi , learn how to edit videos tutorial in hindi  in this video i'll show you how you can edit videos easily with the help of filmora9 video editing software.",
-    creator: "Technology Gyan",
-    views: 160,
-    categoryName: "video-editing-for-beginners",
-  },
-  {
     _id: "oC3gXr1s_aU",
     title: "Total Beginner's Guide to Video Editing",
     creator: "TheNotoriousKIA",
@@ -74,6 +65,15 @@ export const videos = [
     description:
       "Learn how to edit YouTube videos as a beginner with Adobe Premiere video editing software. Premiere is part of the Adobe Creative Cloud software suite. ",
     views: 785,
+    categoryName: "video-editing-for-beginners",
+  },
+  {
+    _id: "oS1BlGm91Bs",
+    title: "Learn Video Editing Full Course For Beginners Step By Step Guide",
+    description:
+      "Learn Video Editing Full Course For Beginners video editing tutorial in hindi , learn how to edit videos tutorial in hindi  in this video i'll show you how you can edit videos easily with the help of filmora9 video editing software.",
+    creator: "Technology Gyan",
+    views: 160,
     categoryName: "video-editing-for-beginners",
   },
 

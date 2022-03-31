@@ -12,7 +12,7 @@ import {
   Login,
   Signup,
   Playlist,
-  PlaylistListing,
+  PlaylistDetails,
 } from "pages";
 
 export const routes = [
@@ -46,7 +46,7 @@ export const routes = [
           },
           {
             path: `/playlist/:playlist_id`,
-            element: <PlaylistListing />,
+            element: <PlaylistDetails />,
           },
           {
             path: "/watchlater",
