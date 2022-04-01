@@ -3,9 +3,11 @@ import { Sidebar } from "./Sidebar";
 
 export const Layout = () => {
   return (
-    <div className="flex pos-rel">
+    <div className="layout">
       <Sidebar />
-      <Outlet />
+      <main className="main">
+        <Outlet />
+      </main>
     </div>
   );
 };

@@ -8,7 +8,7 @@ export const Homepage = () => {
   const { categories } = useCategories();
 
   return (
-    <main className="main container">
+    <main className="container">
       <section className="grid grid-50-50 align-center">
         <div>
           <h2 className="text-primary">Grow your video editing skills</h2>

@@ -1,17 +1,29 @@
-import { History, Layout, LikedVideos, Playlist, WatchLater } from "components";
-import { RequireAuth } from "components/RequireAuth";
+import {
+  History,
+  Layout,
+  LikedVideos,
+  WatchLater,
+  RequireAuth,
+} from "components";
 import MockmanEs from "mockman-js";
-import { ExplorePage, Homepage, Login, Signup } from "pages";
+import {
+  ExplorePage,
+  Homepage,
+  Login,
+  Signup,
+  Playlist,
+  PlaylistListing,
+} from "pages";
 
 export const routes = [
   {
     path: "/",
+    element: <Homepage />,
+  },
+  {
+    path: "/",
     element: <Layout />,
     children: [
-      {
-        path: "/",
-        element: <Homepage />,
-      },
       {
         path: "/explore",
         element: <ExplorePage />,
@@ -31,6 +43,10 @@ export const routes = [
           {
             path: "/playlist",
             element: <Playlist />,
+          },
+          {
+            path: `/playlist/:playlist_id`,
+            element: <PlaylistListing />,
           },
           {
             path: "/watchlater",

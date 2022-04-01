@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import logo from "asset/logo.png";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { logout } from "services";
 import { useAuth } from "context/auth-context";
 import { useOutsideClick } from "hooks";
@@ -28,6 +28,12 @@ export const Navbar = () => {
               <img loading="lazy" src={logo} alt="logo" />
             </Link>
           </li>
+          <li className="nav-menu-item ml-3 mr-2">
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li className="nav-menu-item mr-2">
+            <NavLink to="/explore">Explore</NavLink>
+          </li>
         </ul>
       </div>
       <div className="nav-section right nav-menu">
@@ -46,10 +52,9 @@ export const Navbar = () => {
         </div>
 
         {user ? (
-          <div className="dropdown">
+          <div className="dropdown" ref={dropdownRef}>
             <button
               className="btn icon-only text-light"
-              ref={dropdownRef}
               onClick={() => {
                 setIsOpen((isOpen) => !isOpen);
               }}

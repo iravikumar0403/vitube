@@ -10,11 +10,11 @@ export const signup = async ({ name, email, password }, dispatch) => {
       email,
       password,
     });
-    axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
     const user = {
       user: data.createdUser,
       token: data.encodedToken,
     };
+    axios.defaults.headers.common["authorization"] = user.token;
     localStorage.setItem("user", JSON.stringify(user));
     dispatch({
       type: "AUTH_SUCCESS",
@@ -40,11 +40,11 @@ export const login = async ({ email, password }, dispatch) => {
       password,
     });
     const { data } = response;
-    axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
     const user = {
       user: data.foundUser,
       token: data.encodedToken,
     };
+    axios.defaults.headers.common["authorization"] = user.token;
     localStorage.setItem("user", JSON.stringify(user));
     dispatch({
       type: "AUTH_SUCCESS",
@@ -63,7 +63,7 @@ export const login = async ({ email, password }, dispatch) => {
 
 export const logout = (dispatch) => {
   localStorage.clear();
-  delete axios.defaults.headers.common["Authorization"];
+  delete axios.defaults.headers.common["authorization"];
   dispatch({
     type: "LOGOUT",
   });

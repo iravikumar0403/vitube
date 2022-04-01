@@ -31,7 +31,7 @@ export const Sidebar = () => {
   return (
     <div className="sidebar">
       {navlinks.map(({ title, path }) => (
-        <NavLink className="nav-link" to={path}>
+        <NavLink key={path} className="nav-link" to={path}>
           {title}
         </NavLink>
       ))}
