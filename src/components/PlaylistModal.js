@@ -14,10 +14,12 @@ export const PlaylistModal = () => {
   const [showNewPlaylistForm, setShowNewPlaylistForm] = useState(false);
   const [playlistTitle, setPlaylistTitle] = useState("");
   const { playlists, setPlaylists } = usePlaylist();
+  const [loaders, setLoaders] = useState([]);
   const modalRef = useRef(null);
   useOutsideClick(modalRef, closeModal, true);
 
   const handleChange = async (playlist) => {
+    setLoaders((prev) => [...prev, playlist._id]);
     let updatedList = playlist;
     if (findVideoInPlaylist(selectedVideo._id, playlist)) {
       updatedList = await removeVideoFromPlaylist(
@@ -35,8 +37,10 @@ export const PlaylistModal = () => {
         return pl;
       })
     );
+    setLoaders((prev) => prev.filter((loader) => loader !== playlist._id));
   };
 
+  console.log(loaders);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const playlists = await createPlaylist(playlistTitle);
@@ -58,16 +62,21 @@ export const PlaylistModal = () => {
             {playlists.length > 0 && (
               <div className="modal-body">
                 {playlists.map((playlist) => (
-                  <div className="py-1" key={playlist._id}>
-                    <input
-                      type="checkbox"
-                      value={playlist._id}
-                      id={playlist._id}
-                      checked={Boolean(
-                        findVideoInPlaylist(selectedVideo._id, playlist)
-                      )}
-                      onChange={(e) => handleChange(playlist)}
-                    />
+                  <div className="py-1 playlist-checkbox" key={playlist._id}>
+                    {loaders.some((loader) => loader === playlist._id) ? (
+                      <div className="loader"></div>
+                    ) : (
+                      <input
+                        type="checkbox"
+                        value={playlist._id}
+                        id={playlist._id}
+                        checked={Boolean(
+                          findVideoInPlaylist(selectedVideo._id, playlist)
+                        )}
+                        onChange={(e) => handleChange(playlist)}
+                      />
+                    )}
+
                     <label htmlFor={playlist._id}>{playlist.title}</label>
                   </div>
                 ))}
