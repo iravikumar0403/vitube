@@ -33,6 +33,11 @@ import {
   removeVideoFromPlaylistHandler,
 } from "./backend/controllers/PlaylistController";
 import { users } from "./backend/db/users";
+import {
+  addVideoToWatchlaterHandler,
+  getWatchlaterVideosHandler,
+  removeVideoFromWatchlaterHandler,
+} from "backend/controllers/WatchlaterController";
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -61,6 +66,7 @@ export function makeServer({ environment = "development" } = {}) {
           ...item,
           likes: [],
           history: [],
+          watchlater: [],
         })
       );
     },
@@ -115,6 +121,13 @@ export function makeServer({ environment = "development" } = {}) {
         removeVideoFromHistoryHandler.bind(this)
       );
       this.delete("/user/history/all", clearHistoryHandler.bind(this));
+
+      this.get("/user/watchlater", getWatchlaterVideosHandler.bind(this));
+      this.post("/user/watchlater", addVideoToWatchlaterHandler.bind(this));
+      this.delete(
+        "/user/history/:videoId",
+        removeVideoFromWatchlaterHandler.bind(this)
+      );
     },
   });
 }
