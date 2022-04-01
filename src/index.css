@@ -141,6 +141,10 @@ nav {
   background-color: var(--background-secondary);
 }
 
+.modal-dialog {
+  background-color: var(--background-secondary);
+}
+
 .footer {
   box-shadow: 0px 0px 2px var(--divider-color);
 }

@@ -5,11 +5,13 @@ import { PlaylistVideoCard } from "components/PlaylistVideoCard";
 import { useDocumentTitle } from "hooks";
 import { usePlaylist } from "context";
 import axios from "axios";
+import { ConfirmDeleteModal } from "components/ConfirmDeleteModal";
 
 export const PlaylistDetails = () => {
   const [playlist, setPlaylist] = useState(null);
   const { playlist_id } = useParams();
   const { playlists } = usePlaylist();
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   useDocumentTitle(!playlist ? "ViTube" : `${playlist.title} - ViTube`);
 
   useEffect(() => {
@@ -36,7 +38,10 @@ export const PlaylistDetails = () => {
             {playlist.videos.length} <span>videos</span>
           </p>
         </div>
-        <button className="btn icon-only text-light">
+        <button
+          className="btn text-light"
+          onClick={() => setShowDeleteConfirmation(true)}
+        >
           <MdDeleteForever className="fs-2" />
         </button>
       </div>
@@ -55,6 +60,12 @@ export const PlaylistDetails = () => {
           </p>
         )}
       </div>
+      {showDeleteConfirmation && (
+        <ConfirmDeleteModal
+          playlist={playlist}
+          setShowDeleteConfirmation={setShowDeleteConfirmation}
+        />
+      )}
     </div>
   );
 };
