@@ -126,6 +126,17 @@ nav {
   border-color: var(--primary-color);
 }
 
+.dropdown-menu {
+  right: 0;
+  z-index: 99;
+}
+
+.dropdown-item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 .dropdown-item:hover {
   background-color: var(--background-secondary);
 }

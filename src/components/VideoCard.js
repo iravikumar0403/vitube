@@ -1,6 +1,6 @@
 import playIcon from "asset/playIcon.svg";
-import { BsThreeDotsVertical } from "react-icons/bs";
 import { getInitials } from "utils";
+import { VideoDropdownMenu } from "./VideoDropdownMenu";
 
 export const VideoCard = ({ video }) => {
   const { _id, title, creator, views } = video;
@@ -28,9 +28,7 @@ export const VideoCard = ({ video }) => {
             <p className="text-muted">{views} views</p>
           </div>
         </div>
-        <button className="btn">
-          <BsThreeDotsVertical className="fs-1" />
-        </button>
+        <VideoDropdownMenu video={video} />
       </div>
     </div>
   );

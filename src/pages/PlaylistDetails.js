@@ -1,13 +1,15 @@
-import axios from "axios";
-import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md";
 import { PlaylistVideoCard } from "components/PlaylistVideoCard";
 import { useDocumentTitle } from "hooks";
+import { usePlaylist } from "context";
+import axios from "axios";
 
 export const PlaylistDetails = () => {
   const [playlist, setPlaylist] = useState(null);
   const { playlist_id } = useParams();
+  const { playlists } = usePlaylist();
   useDocumentTitle(!playlist ? "ViTube" : `${playlist.title} - ViTube`);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ export const PlaylistDetails = () => {
         setPlaylist(playlist);
       })();
     }
-  }, [playlist_id]);
+  }, [playlist_id, playlists]);
 
   if (!playlist) {
     return <p className="text-center">Loading...</p>;

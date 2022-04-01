@@ -14,7 +14,7 @@ export const users = [
     playlists: [
       {
         _id: "45533774-cf62-47c6-a2bb-80a82356bc10",
-        title: "begginers guide",
+        title: "beginners guide",
         videos: [
           {
             _id: "oC3gXr1s_aU",
