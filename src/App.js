@@ -1,6 +1,6 @@
 import { Fragment, useEffect } from "react";
 import { useLocation, useRoutes } from "react-router-dom";
-import { Footer, Navbar, PlaylistModal } from "components";
+import { Footer, Navbar, PlaylistModal, Toast } from "components";
 import { routes } from "config";
 
 const App = () => {
@@ -16,6 +16,7 @@ const App = () => {
       <Navbar />
       {routesElement}
       <Footer />
+      <Toast />
       <PlaylistModal />
     </Fragment>
   );

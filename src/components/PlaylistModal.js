@@ -8,6 +8,7 @@ import {
   createPlaylist,
   removeVideoFromPlaylist,
 } from "services";
+import { toast } from "react-toastify";
 
 export const PlaylistModal = () => {
   const { isModalVisible, selectedVideo, closeModal } = useModal();
@@ -26,8 +27,10 @@ export const PlaylistModal = () => {
         selectedVideo._id,
         playlist._id
       );
+      toast.info(`Video removed from ${playlist.title}`);
     } else {
       updatedList = await addVideoToPlaylist(selectedVideo, playlist._id);
+      toast.success(`Video added to ${playlist.title}`);
     }
     if (updatedList) {
       dispatch({

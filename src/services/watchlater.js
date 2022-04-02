@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const addToWatchLater = async (video) => {
   try {
@@ -8,7 +9,7 @@ export const addToWatchLater = async (video) => {
     return watchlater;
   } catch (error) {
     if (error.response.status === 409) {
-      console.log(error.response.data.errors[0]);
+      toast.error(error.response.data.errors[0]);
     }
   }
 };
@@ -21,7 +22,7 @@ export const removeFromWatchlater = async (videoId) => {
     return watchlater;
   } catch (error) {
     if (error.response.status === 409) {
-      console.log(error.response.data.errors[0]);
+      toast.error(error.response.data.errors[0]);
     }
   }
 };
