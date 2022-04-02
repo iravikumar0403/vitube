@@ -18,24 +18,23 @@ const PlaylistProvider = ({ children }) => {
   const { user } = useAuth();
 
   useEffect(() => {
-    if (user) {
-      (async () => {
-        const {
-          data: { playlists },
-        } = await axios.get("/api/user/playlists");
-        dispatch({
-          type: "SET_PLAYLISTS",
-          payload: playlists,
-        });
-        const {
-          data: { watchlater },
-        } = await axios.get(`/api/user/watchlater`);
-        dispatch({
-          type: "UPDATE_WATCHLATER",
-          payload: watchlater,
-        });
-      })();
-    }
+    if (!user) return;
+    (async () => {
+      const {
+        data: { playlists },
+      } = await axios.get("/api/user/playlists");
+      dispatch({
+        type: "SET_PLAYLISTS",
+        payload: playlists,
+      });
+      const {
+        data: { watchlater },
+      } = await axios.get(`/api/user/watchlater`);
+      dispatch({
+        type: "UPDATE_WATCHLATER",
+        payload: watchlater,
+      });
+    })();
   }, [user]);
 
   return (
