@@ -31,7 +31,7 @@ export const addVideoToPlaylist = async (video, playlistId) => {
     });
     return playlist;
   } catch (error) {
-    console.log(error.response);
+    console.log(error.response.data.errors[0]);
   }
 };
 
@@ -42,6 +42,6 @@ export const deletePlaylist = async (playlistId) => {
     } = await axios.delete(`/api/user/playlists/${playlistId}`);
     return playlists;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data.errors[0]);
   }
 };

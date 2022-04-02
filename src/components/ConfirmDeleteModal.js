@@ -6,12 +6,15 @@ import { deletePlaylist } from "services";
 
 export const ConfirmDeleteModal = ({ playlist, setShowDeleteConfirmation }) => {
   const navigate = useNavigate();
-  const { setPlaylists } = usePlaylist();
+  const { dispatch } = usePlaylist();
   const closeModal = () => setShowDeleteConfirmation(false);
   const handleDelete = async () => {
     const playlists = await deletePlaylist(playlist._id);
     navigate("/playlist");
-    setPlaylists(playlists);
+    dispatch({
+      type: "SET_PLAYLISTS",
+      payload: playlists,
+    });
   };
 
   return reactDom.createPortal(

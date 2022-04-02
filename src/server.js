@@ -125,7 +125,7 @@ export function makeServer({ environment = "development" } = {}) {
       this.get("/user/watchlater", getWatchlaterVideosHandler.bind(this));
       this.post("/user/watchlater", addVideoToWatchlaterHandler.bind(this));
       this.delete(
-        "/user/history/:videoId",
+        "/user/watchlater/:videoId",
         removeVideoFromWatchlaterHandler.bind(this)
       );
     },
