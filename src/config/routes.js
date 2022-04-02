@@ -1,4 +1,4 @@
-import { History, Layout, LikedVideos, RequireAuth } from "components";
+import { Layout, RequireAuth } from "components";
 import MockmanEs from "mockman-js";
 import {
   ExplorePage,
@@ -9,6 +9,8 @@ import {
   PlaylistDetails,
   Watchlater,
   WatchVideo,
+  Likes,
+  WatchHistory,
 } from "pages";
 
 export const routes = [
@@ -53,12 +55,12 @@ export const routes = [
             element: <Watchlater />,
           },
           {
-            path: "/liked",
-            element: <LikedVideos />,
+            path: "/likes",
+            element: <Likes />,
           },
           {
             path: "/history",
-            element: <History />,
+            element: <WatchHistory />,
           },
         ],
       },

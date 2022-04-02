@@ -20,7 +20,7 @@ export const Sidebar = () => {
     },
     {
       title: "Liked Videos",
-      path: "/liked",
+      path: "/likes",
     },
     {
       title: "History",

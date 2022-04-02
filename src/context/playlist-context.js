@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useReducer, useEffect, useContext, createContext } from "react";
 import { playlistReducer } from "reducer";
 import { useAuth } from "./auth-context";
@@ -19,22 +18,16 @@ const PlaylistProvider = ({ children }) => {
 
   useEffect(() => {
     if (!user) return;
-    (async () => {
-      const {
-        data: { playlists },
-      } = await axios.get("/api/user/playlists");
-      dispatch({
-        type: "SET_PLAYLISTS",
-        payload: playlists,
-      });
-      const {
-        data: { watchlater },
-      } = await axios.get(`/api/user/watchlater`);
-      dispatch({
-        type: "UPDATE_WATCHLATER",
-        payload: watchlater,
-      });
-    })();
+    const { playlists, likes, history, watchlater } = user.user;
+    dispatch({
+      type: "INIT",
+      payload: {
+        playlists,
+        likes,
+        history,
+        watchlater,
+      },
+    });
   }, [user]);
 
   return (

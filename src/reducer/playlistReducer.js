@@ -1,5 +1,10 @@
 export const playlistReducer = (state, { type, payload }) => {
   switch (type) {
+    case "INIT":
+      return {
+        ...state,
+        ...payload,
+      };
     case "SET_PLAYLISTS":
       return {
         ...state,

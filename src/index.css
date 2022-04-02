@@ -231,6 +231,12 @@ nav {
   font-family: inherit;
 }
 
+.video-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* to-do: move these syles to component library utility */
 .align-center {
   align-items: center;

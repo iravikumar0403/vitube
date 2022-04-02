@@ -6,7 +6,7 @@ import { MdMoreTime } from "react-icons/md";
 import { RiPlayListLine } from "react-icons/ri";
 import { toast } from "react-toastify";
 import { addToWatchLater, removeFromWatchlater } from "services/watchlater";
-import { findVideoInWatchlater } from "utils";
+import { findItemById } from "utils";
 
 export const VideoDropdownMenu = ({ video }) => {
   const { showModal } = useModal();
@@ -18,7 +18,7 @@ export const VideoDropdownMenu = ({ video }) => {
   const handleWatchlaterClick = async () => {
     setIsOpen(false);
     let updatedList = watchlater;
-    if (findVideoInWatchlater(video._id, watchlater)) {
+    if (findItemById(video._id, watchlater)) {
       updatedList = await removeFromWatchlater(video._id);
       toast.info("Video removed from watch later");
     } else {
