@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { PlaylistVideoCard } from "components";
 import { useDocumentTitle } from "hooks";
 import { usePlaylist } from "context";
-import { removeFromHistory } from "services";
+import { clearHistory, removeFromHistory } from "services";
+import { MdDelete } from "react-icons/md";
+import { toast } from "react-toastify";
 
 export const WatchHistory = () => {
   const { history, dispatch } = usePlaylist();
@@ -18,6 +20,17 @@ export const WatchHistory = () => {
     }
   };
 
+  const clearHistoryHandler = async () => {
+    const res = await clearHistory();
+    if (res) {
+      dispatch({
+        type: "UPDATE_HISTORY",
+        payload: res,
+      });
+      toast.success("Your watch history is cleared");
+    }
+  };
+
   return (
     <div className="container">
       <div className="playlist-header">
@@ -27,6 +40,13 @@ export const WatchHistory = () => {
             {history.length} <span>videos</span>
           </p>
         </div>
+        <button
+          className="btn icon-only text-light"
+          title="Clear history"
+          onClick={() => clearHistoryHandler()}
+        >
+          <MdDelete className="fs-2" />
+        </button>
       </div>
       <hr />
       <div className="playlist-listing">
