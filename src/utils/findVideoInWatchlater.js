@@ -1,3 +1,3 @@
 export const findVideoInWatchlater = (videoId, watchlater) => {
-  return watchlater.filter((video) => video._id === videoId)[0];
+  return watchlater.find((video) => video._id === videoId);
 };

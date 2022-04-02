@@ -8,12 +8,9 @@ export const playlistReducer = (state, { type, payload }) => {
     case "UPDATE_PLAYLIST":
       return {
         ...state,
-        playlists: state.playlists.map((pl) => {
-          if (pl._id === payload._id) {
-            return payload;
-          }
-          return pl;
-        }),
+        playlists: state.playlists.map((pl) =>
+          pl._id === payload._id ? payload : pl
+        ),
       };
     case "UPDATE_WATCHLATER":
       return {
