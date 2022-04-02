@@ -2,10 +2,21 @@ import { Link } from "react-router-dom";
 import { PlaylistVideoCard } from "components";
 import { useDocumentTitle } from "hooks";
 import { usePlaylist } from "context";
+import { removeFromLikedVideos } from "services";
 
 export const Likes = () => {
-  const { likes } = usePlaylist();
+  const { likes, dispatch } = usePlaylist();
   useDocumentTitle("Likes - ViTube");
+
+  const deleteBtnHandler = async (id) => {
+    const res = await removeFromLikedVideos(id);
+    if (res) {
+      dispatch({
+        type: "UPDATE_LIKES",
+        payload: res,
+      });
+    }
+  };
 
   return (
     <div className="container">
@@ -21,7 +32,11 @@ export const Likes = () => {
       <div className="playlist-listing">
         {likes.length > 0 ? (
           likes.map((video) => (
-            <PlaylistVideoCard key={video._id} video={video} />
+            <PlaylistVideoCard
+              key={video._id}
+              video={video}
+              deleteBtnHandler={deleteBtnHandler}
+            />
           ))
         ) : (
           <p className="my-5">

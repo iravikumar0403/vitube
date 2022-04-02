@@ -2,10 +2,21 @@ import { Link } from "react-router-dom";
 import { PlaylistVideoCard } from "components";
 import { useDocumentTitle } from "hooks";
 import { usePlaylist } from "context";
+import { removeFromHistory } from "services";
 
 export const WatchHistory = () => {
-  const { history } = usePlaylist();
+  const { history, dispatch } = usePlaylist();
   useDocumentTitle("Watch history - ViTube");
+
+  const deleteBtnHandler = async (id) => {
+    const res = await removeFromHistory(id);
+    if (res) {
+      dispatch({
+        type: "UPDATE_HISTORY",
+        payload: res,
+      });
+    }
+  };
 
   return (
     <div className="container">
@@ -20,9 +31,15 @@ export const WatchHistory = () => {
       <hr />
       <div className="playlist-listing">
         {history.length > 0 ? (
-          history.map((video) => (
-            <PlaylistVideoCard key={video._id} video={video} />
-          ))
+          [...history]
+            .reverse()
+            .map((video) => (
+              <PlaylistVideoCard
+                key={video._id}
+                video={video}
+                deleteBtnHandler={deleteBtnHandler}
+              />
+            ))
         ) : (
           <p className="my-5">
             Your watch history will appear here.{" "}

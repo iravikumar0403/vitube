@@ -2,10 +2,21 @@ import { Link } from "react-router-dom";
 import { PlaylistVideoCard } from "components/PlaylistVideoCard";
 import { useDocumentTitle } from "hooks";
 import { usePlaylist } from "context";
+import { removeFromWatchlater } from "services";
 
 export const Watchlater = () => {
-  const { watchlater } = usePlaylist();
+  const { watchlater, dispatch } = usePlaylist();
   useDocumentTitle("Watch later - ViTube");
+
+  const deleteBtnHandler = async (id) => {
+    const res = await removeFromWatchlater(id);
+    if (res) {
+      dispatch({
+        type: "UPDATE_WATCHLATER",
+        payload: res,
+      });
+    }
+  };
 
   return (
     <div className="container">
@@ -21,7 +32,11 @@ export const Watchlater = () => {
       <div className="playlist-listing">
         {watchlater.length > 0 ? (
           watchlater.map((video) => (
-            <PlaylistVideoCard key={video._id} video={video} />
+            <PlaylistVideoCard
+              key={video._id}
+              video={video}
+              deleteBtnHandler={deleteBtnHandler}
+            />
           ))
         ) : (
           <p className="my-5">

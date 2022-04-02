@@ -22,6 +22,16 @@ export const playlistReducer = (state, { type, payload }) => {
         ...state,
         watchlater: payload,
       };
+    case "UPDATE_LIKES":
+      return {
+        ...state,
+        likes: payload,
+      };
+    case "UPDATE_HISTORY":
+      return {
+        ...state,
+        history: payload,
+      };
     default:
       throw new Error(`Unhandled action type: ${type}`);
   }
