@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { VideoPlayer } from "components/VideoPlayer";
-import { usePlaylist, useVideos } from "context";
-import { useParams } from "react-router-dom";
+import { useAuth, usePlaylist, useVideos } from "context";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { findItemById } from "utils/findItemById";
 import { addToLikedVideos, removeFromLikedVideos } from "services";
@@ -12,6 +12,9 @@ export const WatchVideo = () => {
   const { videos } = useVideos();
   const { likes, dispatch } = usePlaylist();
   const video = findItemById(videoId, videos);
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     (async () => {
@@ -26,6 +29,12 @@ export const WatchVideo = () => {
   }, [dispatch, video]);
 
   const likeHandler = async () => {
+    if (!user)
+      navigate("/login", {
+        state: {
+          from: pathname,
+        },
+      });
     const res = await addToLikedVideos(video);
     res &&
       dispatch({
