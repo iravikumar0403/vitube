@@ -1,11 +1,12 @@
 import playIcon from "asset/playIcon.svg";
+import { Link } from "react-router-dom";
 import { getInitials } from "utils";
 import { VideoDropdownMenu } from "./VideoDropdownMenu";
 
 export const VideoCard = ({ video }) => {
   const { _id, title, creator, views } = video;
   return (
-    <div className="card">
+    <Link to={`/video/${video._id}`} className="card">
       <div className="card-media">
         <div className="play-icon">
           <img src={playIcon} alt="" />
@@ -30,6 +31,6 @@ export const VideoCard = ({ video }) => {
         </div>
         <VideoDropdownMenu video={video} />
       </div>
-    </div>
+    </Link>
   );
 };

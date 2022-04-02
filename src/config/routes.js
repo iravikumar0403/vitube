@@ -8,6 +8,7 @@ import {
   Playlist,
   PlaylistDetails,
   Watchlater,
+  WatchVideo,
 } from "pages";
 
 export const routes = [
@@ -30,6 +31,10 @@ export const routes = [
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/video/:videoId",
+        element: <WatchVideo />,
       },
       {
         path: "/",
