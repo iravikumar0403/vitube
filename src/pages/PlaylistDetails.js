@@ -1,12 +1,18 @@
-import axios from "axios";
-import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md";
 import { PlaylistVideoCard } from "components/PlaylistVideoCard";
+import { useDocumentTitle } from "hooks";
+import { usePlaylist } from "context";
+import axios from "axios";
+import { ConfirmDeleteModal } from "components/ConfirmDeleteModal";
 
-export const PlaylistListing = () => {
+export const PlaylistDetails = () => {
   const [playlist, setPlaylist] = useState(null);
   const { playlist_id } = useParams();
+  const { playlists } = usePlaylist();
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  useDocumentTitle(!playlist ? "ViTube" : `${playlist.title} - ViTube`);
 
   useEffect(() => {
     if (playlist_id) {
@@ -17,10 +23,10 @@ export const PlaylistListing = () => {
         setPlaylist(playlist);
       })();
     }
-  }, [playlist_id]);
+  }, [playlist_id, playlists]);
 
   if (!playlist) {
-    return "loading";
+    return <p className="text-center">Loading...</p>;
   }
 
   return (
@@ -32,14 +38,19 @@ export const PlaylistListing = () => {
             {playlist.videos.length} <span>videos</span>
           </p>
         </div>
-        <button className="btn icon-only text-light">
+        <button
+          className="btn text-light"
+          onClick={() => setShowDeleteConfirmation(true)}
+        >
           <MdDeleteForever className="fs-2" />
         </button>
       </div>
       <hr />
       <div className="playlist-listing">
         {playlist.videos.length > 0 ? (
-          playlist.videos.map((video) => <PlaylistVideoCard video={video} />)
+          playlist.videos.map((video) => (
+            <PlaylistVideoCard key={video._id} video={video} />
+          ))
         ) : (
           <p className="my-5">
             No videos added to this list.{" "}
@@ -49,6 +60,12 @@ export const PlaylistListing = () => {
           </p>
         )}
       </div>
+      {showDeleteConfirmation && (
+        <ConfirmDeleteModal
+          playlist={playlist}
+          setShowDeleteConfirmation={setShowDeleteConfirmation}
+        />
+      )}
     </div>
   );
 };

@@ -1,8 +1,10 @@
 import { PlaylistCard } from "components";
 import { usePlaylist } from "context/playlist-context";
+import { useDocumentTitle } from "hooks";
 import { Link } from "react-router-dom";
 
 export const Playlist = () => {
+  useDocumentTitle("Playlist - ViTube");
   const { playlists } = usePlaylist();
 
   return (

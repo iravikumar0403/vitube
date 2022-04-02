@@ -1,3 +1,4 @@
+@import url(./loader.css);
 :root {
   --bg-gradient: #0658b6 0%, #055092 6%, #000c24 100%;
   --primary-color: #0099f1;
@@ -126,7 +127,22 @@ nav {
   border-color: var(--primary-color);
 }
 
+.dropdown-menu {
+  right: 0;
+  z-index: 99;
+}
+
+.dropdown-item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 .dropdown-item:hover {
+  background-color: var(--background-secondary);
+}
+
+.modal-dialog {
   background-color: var(--background-secondary);
 }
 
@@ -152,6 +168,12 @@ nav {
   max-width: none;
   width: 50%;
   position: relative;
+}
+
+.playlist-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .playlist-thumbnail {

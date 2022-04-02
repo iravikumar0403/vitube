@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import logo from "asset/logo.png";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { logout } from "services";
-import { useAuth } from "context/auth-context";
+import { useAuth } from "context";
 import { useOutsideClick } from "hooks";
 
 export const Navbar = () => {
@@ -61,10 +61,7 @@ export const Navbar = () => {
             >
               <i className="fs-2 fa-solid fa-user"></i>
             </button>
-            <ul
-              className="dropdown-menu"
-              style={isOpen ? { display: "block", right: 0 } : {}}
-            >
+            <ul className={`dropdown-menu ${isOpen && "expanded"}`}>
               <li className="dropdown-item" onClick={handleLogoutClick}>
                 Logout
               </li>
