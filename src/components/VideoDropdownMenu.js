@@ -1,18 +1,36 @@
-import { useModal } from "context";
+import { useModal, usePlaylist } from "context";
 import { useOutsideClick } from "hooks";
 import { useState, useRef } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { MdMoreTime } from "react-icons/md";
 import { RiPlayListLine } from "react-icons/ri";
+import { toast } from "react-toastify";
+import { addToWatchLater, removeFromWatchlater } from "services/watchlater";
+import { findVideoInWatchlater } from "utils";
 
 export const VideoDropdownMenu = ({ video }) => {
   const { showModal } = useModal();
+  const { watchlater, dispatch } = usePlaylist();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   useOutsideClick(dropdownRef, () => setIsOpen(false), isOpen);
 
-  const handleWatchlaterClick = () => {
-    //to do
+  const handleWatchlaterClick = async () => {
+    setIsOpen(false);
+    let updatedList = watchlater;
+    if (findVideoInWatchlater(video._id, watchlater)) {
+      updatedList = await removeFromWatchlater(video._id);
+      toast.info("Video removed from watch later");
+    } else {
+      updatedList = await addToWatchLater(video);
+      toast.success("Video added to watch later");
+    }
+    if (updatedList) {
+      dispatch({
+        type: "UPDATE_WATCHLATER",
+        payload: updatedList,
+      });
+    }
   };
 
   const handleAddToPlaylistClick = () => {

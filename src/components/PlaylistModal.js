@@ -8,12 +8,13 @@ import {
   createPlaylist,
   removeVideoFromPlaylist,
 } from "services";
+import { toast } from "react-toastify";
 
 export const PlaylistModal = () => {
   const { isModalVisible, selectedVideo, closeModal } = useModal();
   const [showNewPlaylistForm, setShowNewPlaylistForm] = useState(false);
   const [playlistTitle, setPlaylistTitle] = useState("");
-  const { playlists, setPlaylists } = usePlaylist();
+  const { playlists, dispatch } = usePlaylist();
   const [loaders, setLoaders] = useState([]);
   const modalRef = useRef(null);
   useOutsideClick(modalRef, closeModal, true);
@@ -26,25 +27,27 @@ export const PlaylistModal = () => {
         selectedVideo._id,
         playlist._id
       );
+      toast.info(`Video removed from ${playlist.title}`);
     } else {
       updatedList = await addVideoToPlaylist(selectedVideo, playlist._id);
+      toast.success(`Video added to ${playlist.title}`);
     }
-    setPlaylists((prev) =>
-      prev.map((pl) => {
-        if (pl._id === updatedList._id) {
-          return updatedList;
-        }
-        return pl;
-      })
-    );
+    if (updatedList) {
+      dispatch({
+        type: "UPDATE_PLAYLIST",
+        payload: updatedList,
+      });
+    }
     setLoaders((prev) => prev.filter((loader) => loader !== playlist._id));
   };
 
-  console.log(loaders);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const playlists = await createPlaylist(playlistTitle);
-    setPlaylists(playlists);
+    dispatch({
+      type: "SET_PLAYLISTS",
+      payload: playlists,
+    });
     setShowNewPlaylistForm(false);
   };
 

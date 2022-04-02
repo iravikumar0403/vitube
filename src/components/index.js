@@ -8,6 +8,6 @@ export { PlaylistCard } from "./PlaylistCard";
 export { PlaylistModal } from "./PlaylistModal";
 export { RequireAuth } from "./RequireAuth";
 export { Sidebar } from "./Sidebar";
+export { Toast } from "./Toast";
 export { VideoCard } from "./VideoCard";
 export { VideoDropdownMenu } from "./VideoDropdownMenu";
-export { WatchLater } from "./WatchLater";

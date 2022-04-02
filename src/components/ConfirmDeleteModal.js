@@ -2,16 +2,21 @@ import { usePlaylist } from "context";
 import React from "react";
 import reactDom from "react-dom";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { deletePlaylist } from "services";
 
 export const ConfirmDeleteModal = ({ playlist, setShowDeleteConfirmation }) => {
   const navigate = useNavigate();
-  const { setPlaylists } = usePlaylist();
+  const { dispatch } = usePlaylist();
   const closeModal = () => setShowDeleteConfirmation(false);
   const handleDelete = async () => {
     const playlists = await deletePlaylist(playlist._id);
     navigate("/playlist");
-    setPlaylists(playlists);
+    dispatch({
+      type: "SET_PLAYLISTS",
+      payload: playlists,
+    });
+    toast.info(`${playlist.title} playlist deleted successfully`);
   };
 
   return reactDom.createPortal(

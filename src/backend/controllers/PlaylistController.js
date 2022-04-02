@@ -111,7 +111,7 @@ export const addVideoToPlaylistHandler = function (schema, request) {
     const playlistId = request.params.playlistId;
     const { video } = JSON.parse(request.requestBody);
     const playlist = user.playlists.find((item) => item._id === playlistId);
-    if (playlist.videos.some((item) => item.id === video.id)) {
+    if (playlist.videos.some((item) => item._id === video._id)) {
       return new Response(
         409,
         {},
@@ -121,6 +121,14 @@ export const addVideoToPlaylistHandler = function (schema, request) {
       );
     }
     playlist.videos.push(video);
+    this.db.users.update({
+      playlists: user.playlists.map((pl) => {
+        if (pl._id === playlist._id) {
+          return playlist;
+        }
+        return pl;
+      }),
+    });
     return new Response(201, {}, { playlist });
   }
   return new Response(
@@ -145,6 +153,14 @@ export const removeVideoFromPlaylistHandler = function (schema, request) {
       (item) => item._id !== videoId
     );
     playlist.videos = filteredVideos;
+    this.db.users.update({
+      playlists: user.playlists.map((pl) => {
+        if (pl._id === playlist._id) {
+          return playlist;
+        }
+        return pl;
+      }),
+    });
     return new Response(200, {}, { playlist });
   }
   return new Response(

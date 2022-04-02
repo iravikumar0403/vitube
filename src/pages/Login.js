@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "context";
-import { loginFormReducer } from "reducer/formReducer";
+import { loginFormReducer } from "reducer";
 import { login } from "services";
 import { useDocumentTitle } from "hooks";
 
