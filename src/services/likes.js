@@ -19,7 +19,6 @@ export const removeFromLikedVideos = async (videoId) => {
     const {
       data: { likes },
     } = await axios.delete(`/api/user/likes/${videoId}`);
-    console.log(likes);
     return likes;
   } catch (error) {
     if (error.response.status === 409) {
