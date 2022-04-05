@@ -19,7 +19,7 @@ export const PlaylistDetails = () => {
     const res = await removeVideoFromPlaylist(id, playlist_id);
     if (res) {
       dispatch({
-        type: "UPDATE_PLAYLISTS",
+        type: "UPDATE_PLAYLIST",
         payload: res,
       });
     }
