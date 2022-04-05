@@ -19,6 +19,16 @@ export const Navbar = () => {
     logout(dispatch);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/search?q=${query}`);
+  };
+
+  const handleClear = (e) => {
+    setQuery("");
+    if (pathname === "search") navigate("/explore");
+  };
+
   return (
     <nav>
       <div className="nav-section left">
@@ -37,19 +47,31 @@ export const Navbar = () => {
         </ul>
       </div>
       <div className="nav-section right nav-menu">
-        <div className="input-icon ml-auto mr-1">
-          <input
-            width={"700px"}
-            className="input"
-            type="text"
-            placeholder="Search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button className="btn icon-only text-light">
-            <i className="fa fa-search"></i>
-          </button>
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="input-icon ml-auto mr-1">
+            <input
+              width={"700px"}
+              className="input"
+              type="text"
+              placeholder="Search"
+              value={query}
+              required
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            {query && (
+              <button
+                type="button"
+                className="btn text-light"
+                onClick={handleClear}
+              >
+                <i class="fa-solid fa-x"></i>
+              </button>
+            )}
+            <button type="submit" className="btn icon-only text-light">
+              <i className="fa fa-search"></i>
+            </button>
+          </div>
+        </form>
 
         {user ? (
           <div className="dropdown" ref={dropdownRef}>

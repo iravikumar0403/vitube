@@ -4,6 +4,7 @@ export { Likes } from "./Likes";
 export { Login } from "./Login";
 export { Playlist } from "./Playlist";
 export { PlaylistDetails } from "./PlaylistDetails";
+export { SearchResults } from "./SearchResults";
 export { Signup } from "./Signup";
 export { WatchHistory } from "./WatchHistory";
 export { Watchlater } from "./Watchlater";
