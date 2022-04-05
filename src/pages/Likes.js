@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
-import { PlaylistVideoCard } from "components/PlaylistVideoCard";
+import { PlaylistVideoCard } from "components";
 import { useDocumentTitle } from "hooks";
 import { usePlaylist } from "context";
-import { removeFromWatchlater } from "services";
+import { removeFromLikedVideos } from "services";
 
-export const Watchlater = () => {
-  const { watchlater, dispatch } = usePlaylist();
-  useDocumentTitle("Vitube - Watch later");
+export const Likes = () => {
+  const { likes, dispatch } = usePlaylist();
+  useDocumentTitle("Vitube - Likes");
 
   const deleteBtnHandler = async (id) => {
-    const res = await removeFromWatchlater(id);
+    const res = await removeFromLikedVideos(id);
     if (res) {
       dispatch({
-        type: "UPDATE_WATCHLATER",
+        type: "UPDATE_LIKES",
         payload: res,
       });
     }
@@ -22,16 +22,16 @@ export const Watchlater = () => {
     <div className="container">
       <div className="playlist-header">
         <div>
-          <h3>Watch later</h3> &#9679;
+          <h3>Liked videos</h3> &#9679;
           <p>
-            {watchlater.length} <span>videos</span>
+            {likes.length} <span>videos</span>
           </p>
         </div>
       </div>
       <hr />
       <div className="playlist-listing">
-        {watchlater.length > 0 ? (
-          watchlater.map((video) => (
+        {likes.length > 0 ? (
+          likes.map((video) => (
             <PlaylistVideoCard
               key={video._id}
               video={video}
@@ -40,7 +40,7 @@ export const Watchlater = () => {
           ))
         ) : (
           <p className="my-5">
-            You have not added any videos to watch later.{" "}
+            You have no likes any videos yet.{" "}
             <Link to="/explore" className="link">
               Explore videos
             </Link>

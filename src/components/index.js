@@ -1,11 +1,10 @@
 export { CategoryGrid } from "./CategoryGrid";
 export { Footer } from "./Footer";
-export { History } from "./History";
 export { Layout } from "./Layout";
-export { LikedVideos } from "./LikedVideos";
 export { Navbar } from "./Navbar";
 export { PlaylistCard } from "./PlaylistCard";
 export { PlaylistModal } from "./PlaylistModal";
+export { PlaylistVideoCard } from "./PlaylistVideoCard";
 export { RequireAuth } from "./RequireAuth";
 export { Sidebar } from "./Sidebar";
 export { Toast } from "./Toast";

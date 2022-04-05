@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const createPlaylist = async (title) => {
   try {
@@ -7,7 +8,7 @@ export const createPlaylist = async (title) => {
     } = await axios.post(`/api/user/playlists`, { playlist: { title } });
     return playlists;
   } catch (error) {
-    console.log(error.response);
+    toast.error("Failed to create playlist");
   }
 };
 
@@ -18,7 +19,7 @@ export const removeVideoFromPlaylist = async (videoId, playlistId) => {
     } = await axios.delete(`/api/user/playlists/${playlistId}/${videoId}`);
     return playlist;
   } catch (error) {
-    console.log(error.response);
+    toast.error("Failed to remove video from playlist");
   }
 };
 
@@ -31,7 +32,7 @@ export const addVideoToPlaylist = async (video, playlistId) => {
     });
     return playlist;
   } catch (error) {
-    console.log(error.response.data.errors[0]);
+    toast.error(error.response.data.errors[0]);
   }
 };
 
@@ -42,6 +43,6 @@ export const deletePlaylist = async (playlistId) => {
     } = await axios.delete(`/api/user/playlists/${playlistId}`);
     return playlists;
   } catch (error) {
-    console.log(error.response.data.errors[0]);
+    toast.error("Failed to delete playlist");
   }
 };

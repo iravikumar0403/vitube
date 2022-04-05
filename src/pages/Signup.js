@@ -6,7 +6,7 @@ import { signup } from "services";
 import { useDocumentTitle } from "hooks";
 
 export const Signup = () => {
-  useDocumentTitle("Signup - ViTube");
+  useDocumentTitle("Vitube - Signup");
   const navigate = useNavigate();
   const { state } = useLocation();
   const { from } = state || {};

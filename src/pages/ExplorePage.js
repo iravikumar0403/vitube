@@ -3,7 +3,7 @@ import { useVideos } from "context";
 import { useDocumentTitle } from "hooks";
 
 export const ExplorePage = () => {
-  useDocumentTitle("Explore - ViTube");
+  useDocumentTitle("Vitube - Explore");
   const { videos } = useVideos();
   return (
     <div className="listing-grid my-3">

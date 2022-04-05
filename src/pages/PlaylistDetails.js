@@ -6,13 +6,24 @@ import { useDocumentTitle } from "hooks";
 import { usePlaylist } from "context";
 import axios from "axios";
 import { ConfirmDeleteModal } from "components/ConfirmDeleteModal";
+import { removeVideoFromPlaylist } from "services";
 
 export const PlaylistDetails = () => {
   const [playlist, setPlaylist] = useState(null);
   const { playlist_id } = useParams();
-  const { playlists } = usePlaylist();
+  const { playlists, dispatch } = usePlaylist();
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-  useDocumentTitle(!playlist ? "ViTube" : `${playlist.title} - ViTube`);
+  useDocumentTitle(!playlist ? "Vitube" : `Vitube - ${playlist.title}`);
+
+  const deleteBtnHandler = async (id) => {
+    const res = await removeVideoFromPlaylist(id, playlist_id);
+    if (res) {
+      dispatch({
+        type: "UPDATE_PLAYLISTS",
+        payload: res,
+      });
+    }
+  };
 
   useEffect(() => {
     if (playlist_id) {
@@ -49,7 +60,11 @@ export const PlaylistDetails = () => {
       <div className="playlist-listing">
         {playlist.videos.length > 0 ? (
           playlist.videos.map((video) => (
-            <PlaylistVideoCard key={video._id} video={video} />
+            <PlaylistVideoCard
+              key={video._id}
+              video={video}
+              deleteBtnHandler={deleteBtnHandler}
+            />
           ))
         ) : (
           <p className="my-5">

@@ -4,7 +4,7 @@ import { useDocumentTitle } from "hooks";
 import { Link } from "react-router-dom";
 
 export const Playlist = () => {
-  useDocumentTitle("Playlist - ViTube");
+  useDocumentTitle("Vitube - Playlists");
   const { playlists } = usePlaylist();
 
   return (

@@ -4,7 +4,7 @@ import { useCategories } from "context";
 import { useDocumentTitle } from "hooks";
 
 export const Homepage = () => {
-  useDocumentTitle("ViTube");
+  useDocumentTitle("Vitube");
   const { categories } = useCategories();
 
   return (
