@@ -237,6 +237,25 @@ nav {
   justify-content: space-between;
 }
 
+.chips-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.chip {
+  border: 1px solid var(--primary-color);
+  padding: 0.5rem 2rem;
+  display: inline-block;
+  border-radius: 10rem;
+  cursor: pointer;
+}
+
+.chip.active {
+  background-color: var(--primary-color);
+}
+
 /* to-do: move these syles to component library utility */
 .align-center {
   align-items: center;

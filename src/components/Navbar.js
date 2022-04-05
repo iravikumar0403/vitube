@@ -26,7 +26,7 @@ export const Navbar = () => {
 
   const handleClear = (e) => {
     setQuery("");
-    if (pathname === "search") navigate("/explore");
+    if (pathname === "/search") navigate("/explore");
   };
 
   return (
@@ -64,7 +64,7 @@ export const Navbar = () => {
                 className="btn text-light"
                 onClick={handleClear}
               >
-                <i class="fa-solid fa-x"></i>
+                <i className="fa-solid fa-x"></i>
               </button>
             )}
             <button type="submit" className="btn icon-only text-light">
