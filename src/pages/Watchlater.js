@@ -6,7 +6,7 @@ import { removeFromWatchlater } from "services";
 
 export const Watchlater = () => {
   const { watchlater, dispatch } = usePlaylist();
-  useDocumentTitle("Watch later - ViTube");
+  useDocumentTitle("Vitube - Watch later");
 
   const deleteBtnHandler = async (id) => {
     const res = await removeFromWatchlater(id);

@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 export const WatchHistory = () => {
   const { history, dispatch } = usePlaylist();
-  useDocumentTitle("Watch history - ViTube");
+  useDocumentTitle("Vitube - Watch history");
 
   const deleteBtnHandler = async (id) => {
     const res = await removeFromHistory(id);

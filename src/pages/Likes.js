@@ -6,7 +6,7 @@ import { removeFromLikedVideos } from "services";
 
 export const Likes = () => {
   const { likes, dispatch } = usePlaylist();
-  useDocumentTitle("Likes - ViTube");
+  useDocumentTitle("Vitube - Likes");
 
   const deleteBtnHandler = async (id) => {
     const res = await removeFromLikedVideos(id);

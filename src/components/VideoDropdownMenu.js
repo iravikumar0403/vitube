@@ -1,9 +1,10 @@
-import { useModal, usePlaylist } from "context";
+import { useAuth, useModal, usePlaylist } from "context";
 import { useOutsideClick } from "hooks";
 import { useState, useRef } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { MdMoreTime } from "react-icons/md";
 import { RiPlayListLine } from "react-icons/ri";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { addToWatchLater, removeFromWatchlater } from "services/watchlater";
 import { findItemById } from "utils";
@@ -13,9 +14,16 @@ export const VideoDropdownMenu = ({ video }) => {
   const { watchlater, dispatch } = usePlaylist();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   useOutsideClick(dropdownRef, () => setIsOpen(false), isOpen);
 
   const handleWatchlaterClick = async () => {
+    if (!user) {
+      navigate("/login", { state: { from: pathname } });
+      return;
+    }
     setIsOpen(false);
     let updatedList = watchlater;
     if (findItemById(video._id, watchlater)) {

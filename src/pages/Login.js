@@ -6,7 +6,7 @@ import { login } from "services";
 import { useDocumentTitle } from "hooks";
 
 export const Login = () => {
-  useDocumentTitle("Login - ViTube");
+  useDocumentTitle("Vitube - Login");
   const navigate = useNavigate();
   const { loading, error, user, dispatch: authDispatch } = useAuth();
   const { state } = useLocation();

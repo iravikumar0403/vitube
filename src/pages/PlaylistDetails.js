@@ -13,7 +13,7 @@ export const PlaylistDetails = () => {
   const { playlist_id } = useParams();
   const { playlists, dispatch } = usePlaylist();
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-  useDocumentTitle(!playlist ? "ViTube" : `${playlist.title} - ViTube`);
+  useDocumentTitle(!playlist ? "Vitube" : `Vitube - ${playlist.title}`);
 
   const deleteBtnHandler = async (id) => {
     const res = await removeVideoFromPlaylist(id, playlist_id);
