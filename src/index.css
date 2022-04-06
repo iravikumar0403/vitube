@@ -43,7 +43,7 @@ nav {
 }
 
 .card {
-  min-width: 20rem;
+  min-width: 18rem;
 }
 
 .card-media {
@@ -70,10 +70,15 @@ nav {
   align-self: flex-start;
 }
 
+.video-slider {
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  padding-bottom: 4.5rem;
+}
+
 .video-grid {
   display: flex;
   gap: 1rem;
-  overflow-x: scroll;
   padding-bottom: 1rem;
 }
 
@@ -235,6 +240,41 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.chips-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.chip {
+  border: 1px solid var(--primary-color);
+  padding: 0.5rem 2rem;
+  display: inline-block;
+  border-radius: 10rem;
+  cursor: pointer;
+}
+
+.chip.active {
+  background-color: var(--primary-color);
+}
+
+.grid-slider {
+  position: relative;
+}
+
+.slide-btn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+}
+.slide-btn.left {
+  left: -4rem;
+}
+.slide-btn.right {
+  right: -4rem;
 }
 
 /* to-do: move these syles to component library utility */

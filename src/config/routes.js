@@ -1,5 +1,5 @@
 import { Layout, RequireAuth } from "components";
-import MockmanEs from "mockman-js";
+import Mockman from "mockman-js";
 import {
   ExplorePage,
   Homepage,
@@ -7,6 +7,7 @@ import {
   Signup,
   Playlist,
   PlaylistDetails,
+  SearchResults,
   Watchlater,
   WatchVideo,
   Likes,
@@ -25,6 +26,10 @@ export const routes = [
       {
         path: "/explore",
         element: <ExplorePage />,
+      },
+      {
+        path: "/search",
+        element: <SearchResults />,
       },
       {
         path: "/login",
@@ -68,6 +73,6 @@ export const routes = [
   },
   {
     path: "/mock",
-    element: <MockmanEs />,
+    element: <Mockman />,
   },
 ];
