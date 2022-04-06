@@ -2,6 +2,7 @@ export { ExplorePage } from "./ExplorePage";
 export { Homepage } from "./Homepage";
 export { Likes } from "./Likes";
 export { Login } from "./Login";
+export { NotFound } from "./NotFound";
 export { Playlist } from "./Playlist";
 export { PlaylistDetails } from "./PlaylistDetails";
 export { SearchResults } from "./SearchResults";

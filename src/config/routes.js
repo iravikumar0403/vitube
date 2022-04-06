@@ -12,6 +12,7 @@ import {
   WatchVideo,
   Likes,
   WatchHistory,
+  NotFound,
 } from "pages";
 
 export const routes = [
@@ -74,5 +75,9 @@ export const routes = [
   {
     path: "/mock",
     element: <Mockman />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ];
