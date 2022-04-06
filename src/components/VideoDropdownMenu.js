@@ -42,6 +42,10 @@ export const VideoDropdownMenu = ({ video }) => {
   };
 
   const handleAddToPlaylistClick = () => {
+    if (!user) {
+      navigate("/login", { state: { from: pathname } });
+      return;
+    }
     showModal(video);
     setIsOpen(false);
   };
