@@ -16,3 +16,11 @@
   background-color: #d1d1d1;
   border-radius: 10px;
 }
+
+div {
+  scrollbar-width: none;
+}
+
+div::-webkit-scrollbar {
+  display: none;
+}
