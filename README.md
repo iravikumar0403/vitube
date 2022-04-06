@@ -27,3 +27,6 @@ Or you can signup and create a new ID.
 6. Netlify for hosting the static server.
 
 ## Screenshots -
+![image](https://user-images.githubusercontent.com/62254807/162022168-84c3abe3-658d-415f-a9c8-be4d56ead8b5.png)
+![image](https://user-images.githubusercontent.com/62254807/162022314-439465e2-9f05-4a98-93c4-ab58073b9e30.png)
+![image](https://user-images.githubusercontent.com/62254807/162022344-ec8e0719-8340-4bf3-b64c-fd1a163229e9.png)
