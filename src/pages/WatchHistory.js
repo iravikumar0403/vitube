@@ -5,9 +5,11 @@ import { usePlaylist } from "context";
 import { clearHistory, removeFromHistory } from "services";
 import { MdDelete } from "react-icons/md";
 import { toast } from "react-toastify";
+import { useTheme } from "context/theme-context";
 
 export const WatchHistory = () => {
   const { history, dispatch } = usePlaylist();
+  const { theme } = useTheme();
   useDocumentTitle("Vitube - Watch history");
 
   const deleteBtnHandler = async (id) => {
@@ -41,7 +43,7 @@ export const WatchHistory = () => {
           </p>
         </div>
         <button
-          className="btn icon-only text-light"
+          className={`btn icon-only ${theme === "dark" ? "text-light" : ""}`}
           title="Clear history"
           onClick={() => clearHistoryHandler()}
         >

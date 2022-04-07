@@ -4,6 +4,8 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { logout } from "services";
 import { useAuth } from "context";
 import { useOutsideClick } from "hooks";
+import { useTheme } from "context/theme-context";
+import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +13,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { user, dispatch } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const dropdownRef = useRef();
   useOutsideClick(dropdownRef, () => setIsOpen(false), isOpen);
 
@@ -61,13 +64,18 @@ export const Navbar = () => {
             {query && (
               <button
                 type="button"
-                className="btn text-light"
+                className={`btn ${theme === "dark" ? "text-light" : ""}`}
                 onClick={handleClear}
               >
                 <i className="fa-solid fa-x"></i>
               </button>
             )}
-            <button type="submit" className="btn icon-only text-light">
+            <button
+              type="submit"
+              className={`btn icon-only ${
+                theme === "dark" ? "text-light" : ""
+              }`}
+            >
               <i className="fa fa-search"></i>
             </button>
           </div>
@@ -76,7 +84,9 @@ export const Navbar = () => {
         {user ? (
           <div className="dropdown" ref={dropdownRef}>
             <button
-              className="btn icon-only text-light"
+              className={`btn icon-only ${
+                theme === "dark" ? "text-light" : ""
+              }`}
               onClick={() => {
                 setIsOpen((isOpen) => !isOpen);
               }}
@@ -99,6 +109,25 @@ export const Navbar = () => {
             </button>
           </li>
         )}
+        <li className="nav-menu-item mr-1" onClick={toggleTheme}>
+          {theme === "dark" ? (
+            <button
+              className={`btn icon-only ${
+                theme === "dark" ? "text-light" : ""
+              }`}
+            >
+              <BsFillSunFill className="fs-1" />
+            </button>
+          ) : (
+            <button
+              className={`btn icon-only ${
+                theme === "dark" ? "text-light" : ""
+              }`}
+            >
+              <BsFillMoonFill className="fs-1" />
+            </button>
+          )}
+        </li>
       </div>
       <div className="nav-menu-resp">
         <i className="fas fa-bars"></i>

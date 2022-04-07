@@ -4,9 +4,11 @@ import { useAuth } from "context";
 import { signupFormReducer } from "reducer";
 import { signup } from "services";
 import { useDocumentTitle } from "hooks";
+import { useTheme } from "context/theme-context";
 
 export const Signup = () => {
   useDocumentTitle("Vitube - Signup");
+  const { theme } = useTheme();
   const navigate = useNavigate();
   const { state } = useLocation();
   const { from } = state || {};
@@ -94,7 +96,9 @@ export const Signup = () => {
             />
             <button
               type="button"
-              className="btn icon-only text-light"
+              className={`btn icon-only ${
+                theme === "dark" ? "text-light" : ""
+              }`}
               onClick={() =>
                 formDispatch({
                   type: "SHOW/HIDE_PASS",

@@ -1,4 +1,5 @@
 import { usePlaylist } from "context";
+import { useTheme } from "context/theme-context";
 import React from "react";
 import reactDom from "react-dom";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +9,7 @@ import { deletePlaylist } from "services";
 export const ConfirmDeleteModal = ({ playlist, setShowDeleteConfirmation }) => {
   const navigate = useNavigate();
   const { dispatch } = usePlaylist();
+  const { theme } = useTheme();
   const closeModal = () => setShowDeleteConfirmation(false);
   const handleDelete = async () => {
     const playlists = await deletePlaylist(playlist._id);
@@ -24,7 +26,10 @@ export const ConfirmDeleteModal = ({ playlist, setShowDeleteConfirmation }) => {
       <div className="modal-dialog centered">
         <div className="modal-header">
           <h3>Are you sure? </h3>
-          <button className="btn icon-only text-light" onClick={closeModal}>
+          <button
+            className={`btn icon-only ${theme === "dark" ? "text-light" : ""}`}
+            onClick={closeModal}
+          >
             <i className="fa fa-times"></i>
           </button>
         </div>

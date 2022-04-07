@@ -1,12 +1,22 @@
-@import url(./loader.css);
-:root {
+@import url(./asset/css/loader.css);
+@import url(./asset/css/scrollbar.css);
+body {
+  --bg-gradient: #ffffff 0%, #ffffff 6%, #ffffff 100%;
+  --primary-color: #0099f1;
+  --primary-text: #000c24;
+  --secondary-text: #0d172c;
+  --background-primary: #efefef;
+  --background-secondary: #d6d6d6;
+  line-height: 1.2;
+}
+
+body.dark {
   --bg-gradient: #0658b6 0%, #055092 6%, #000c24 100%;
   --primary-color: #0099f1;
   --primary-text: #ffffff;
   --secondary-text: #fefefe;
   --background-primary: #0886f2;
   --background-secondary: #02346d;
-  line-height: 1.2;
 }
 
 #root {

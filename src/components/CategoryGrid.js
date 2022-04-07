@@ -1,7 +1,9 @@
 import { VideoCard } from "./VideoCard";
 import { BiCaretLeftCircle, BiCaretRightCircle } from "react-icons/bi";
+import { useTheme } from "context/theme-context";
 
 export const CategoryGrid = ({ category: { videos, categoryName } }) => {
+  const { theme } = useTheme();
   if (!videos?.length) {
     return "";
   }
@@ -11,7 +13,9 @@ export const CategoryGrid = ({ category: { videos, categoryName } }) => {
       <h2>{categoryName}</h2>
       <div className="grid-slider">
         <button
-          className="btn text-light slide-btn left"
+          className={`btn slide-btn left ${
+            theme === "dark" ? "text-light" : ""
+          }`}
           onClick={(e) => (e.currentTarget.nextSibling.scrollLeft -= 300)}
         >
           <BiCaretLeftCircle className="slider-icon" />
@@ -24,7 +28,9 @@ export const CategoryGrid = ({ category: { videos, categoryName } }) => {
           </div>
         </div>
         <button
-          className="btn text-light slide-btn right"
+          className={`btn slide-btn right ${
+            theme === "dark" ? "text-light" : ""
+          }`}
           onClick={(e) => (e.currentTarget.previousSibling.scrollLeft += 300)}
         >
           <BiCaretRightCircle className="slider-icon" />

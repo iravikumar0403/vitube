@@ -2,8 +2,10 @@ import { getInitials } from "utils";
 import playIcon from "asset/playIcon.svg";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { useTheme } from "context/theme-context";
 
 export const PlaylistVideoCard = ({ video, deleteBtnHandler }) => {
+  const { theme } = useTheme();
   const { _id, title, creator, views } = video;
 
   return (
@@ -32,7 +34,7 @@ export const PlaylistVideoCard = ({ video, deleteBtnHandler }) => {
             </div>
           </div>
           <button
-            className="btn icon-only text-light"
+            className={`btn icon-only ${theme === "dark" ? "text-light" : ""}`}
             onClick={() => deleteBtnHandler(_id)}
           >
             <MdDelete className="fs-2" />

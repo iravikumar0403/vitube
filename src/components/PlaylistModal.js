@@ -9,12 +9,14 @@ import {
   removeVideoFromPlaylist,
 } from "services";
 import { toast } from "react-toastify";
+import { useTheme } from "context/theme-context";
 
 export const PlaylistModal = () => {
   const { isModalVisible, selectedVideo, closeModal } = useModal();
   const [showNewPlaylistForm, setShowNewPlaylistForm] = useState(false);
   const [playlistTitle, setPlaylistTitle] = useState("");
   const { playlists, dispatch } = usePlaylist();
+  const { theme } = useTheme();
   const [loaders, setLoaders] = useState([]);
   const modalRef = useRef(null);
   useOutsideClick(modalRef, closeModal, true);
@@ -58,7 +60,12 @@ export const PlaylistModal = () => {
           <div className="modal-dialog centered" ref={modalRef}>
             <div className="modal-header">
               <h3> Save to...</h3>
-              <button className="btn icon-only text-light" onClick={closeModal}>
+              <button
+                className={`btn icon-only ${
+                  theme === "dark" ? "text-light" : ""
+                } `}
+                onClick={closeModal}
+              >
                 <i className="fa fa-times"></i>
               </button>
             </div>

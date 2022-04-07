@@ -7,9 +7,11 @@ import { usePlaylist } from "context";
 import axios from "axios";
 import { ConfirmDeleteModal } from "components/ConfirmDeleteModal";
 import { removeVideoFromPlaylist } from "services";
+import { useTheme } from "context/theme-context";
 
 export const PlaylistDetails = () => {
   const [playlist, setPlaylist] = useState(null);
+  const { theme } = useTheme();
   const { playlist_id } = useParams();
   const { playlists, dispatch } = usePlaylist();
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
@@ -50,7 +52,7 @@ export const PlaylistDetails = () => {
           </p>
         </div>
         <button
-          className="btn text-light"
+          className={`btn icon-only ${theme === "dark" ? "text-light" : ""}`}
           onClick={() => setShowDeleteConfirmation(true)}
         >
           <MdDeleteForever className="fs-2" />

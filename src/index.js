@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "App";
 import "index.css";
-import "scrollbar.css";
 import { makeServer } from "server";
 import { StateProvider } from "context/StateProvider";
 
