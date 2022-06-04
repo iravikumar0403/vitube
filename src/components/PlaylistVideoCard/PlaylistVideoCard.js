@@ -2,15 +2,18 @@ import { getInitials } from "utils";
 import playIcon from "asset/playIcon.svg";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useTheme } from "context/theme-context";
+import { useTheme } from "context";
+
+import classes from "./PlaylistVideoCard.module.css";
+const { playlist_card, card_media, card_details } = classes;
 
 export const PlaylistVideoCard = ({ video, deleteBtnHandler }) => {
   const { theme } = useTheme();
   const { _id, title, creator, views } = video;
 
   return (
-    <div className="card card card-horizontal playlist w-auto">
-      <Link to={`/video/${video._id}`} className="card-media">
+    <div className={playlist_card}>
+      <Link to={`/video/${video._id}`} className={card_media}>
         <div className="play-icon">
           <img src={playIcon} alt="play" />
         </div>
@@ -20,9 +23,9 @@ export const PlaylistVideoCard = ({ video, deleteBtnHandler }) => {
           alt="card media"
         />
       </Link>
-      <div className="card-details">
+      <div className={card_details}>
         <div className="card-body">
-          <p className="card-title fs-1 m-0">
+          <p className="fs-1 m-0">
             {title.length > 50 ? title.substring(0, 50) + "..." : title}
           </p>
         </div>

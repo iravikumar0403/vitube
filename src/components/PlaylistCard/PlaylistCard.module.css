@@ -1,0 +1,22 @@
+.playlist_thumbnail {
+  align-items: center;
+  background-color: var(--background-primary);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  opacity: 90%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40%;
+  text-align: center;
+}
+
+.playlist_icon {
+  color: var(--secondary-text);
+}
+
+.playlist_btn {
+  width: 100%;
+  text-align: center;
+}

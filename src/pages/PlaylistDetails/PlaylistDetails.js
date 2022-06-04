@@ -8,6 +8,10 @@ import { removeVideoFromPlaylist } from "services";
 import { useTheme } from "context/theme-context";
 import axios from "axios";
 
+//css imports
+import classes from "./PlaylistDetails.module.css";
+const { playlist_listing } = classes;
+
 export const PlaylistDetails = () => {
   const [playlist, setPlaylist] = useState(null);
   const { theme } = useTheme();
@@ -45,7 +49,7 @@ export const PlaylistDetails = () => {
     <div className="container">
       <div className="playlist-header">
         <div>
-          <h3>{playlist.title}</h3> &#9679;
+          <h3 className="mx-2">{playlist.title}</h3> &#9679;
           <p>
             {playlist.videos.length} <span>videos</span>
           </p>
@@ -58,7 +62,7 @@ export const PlaylistDetails = () => {
         </button>
       </div>
       <hr />
-      <div className="playlist-listing">
+      <div className={playlist_listing}>
         {playlist.videos.length > 0 ? (
           playlist.videos.map((video) => (
             <PlaylistVideoCard

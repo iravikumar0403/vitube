@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { RiPlayListLine } from "react-icons/ri";
+import classes from "./PlaylistCard.module.css";
+
+const { playlist_thumbnail, playlist_icon, playlist_btn } = classes;
 
 export const PlaylistCard = ({ playlist }) => {
   return (
@@ -14,14 +17,14 @@ export const PlaylistCard = ({ playlist }) => {
           }
           alt={playlist.title}
         />
-        <div className="playlist-thumbnail">
-          <div className="playlist-icon">
+        <div className={playlist_thumbnail}>
+          <div className={playlist_icon}>
             <p className="fs-1">{playlist.videos.length}</p>
             <RiPlayListLine />
           </div>
         </div>
       </div>
-      <div className="card-details">
+      <div>
         <div className="card-body">
           <p className="card-title fs-1">
             {playlist.title.length > 30
@@ -31,7 +34,7 @@ export const PlaylistCard = ({ playlist }) => {
         </div>
         <div className="card-footer">
           <Link
-            className="btn primary outlined playlist-btn"
+            className={`btn primary outlined ${playlist_btn}`}
             to={`/playlist/${playlist._id}`}
           >
             View Playlist

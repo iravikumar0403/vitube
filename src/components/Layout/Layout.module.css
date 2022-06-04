@@ -1,0 +1,9 @@
+.layout {
+  display: flex;
+}
+
+.main {
+  border-left: 1px solid var(--divider-color);
+  min-height: calc(100vh - 12.15rem);
+  width: 100%;
+}
