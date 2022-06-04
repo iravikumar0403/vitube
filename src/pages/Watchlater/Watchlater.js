@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { PlaylistVideoCard } from "components/PlaylistVideoCard";
+import { PlaylistVideoCard } from "components";
 import { useDocumentTitle } from "hooks";
 import { usePlaylist } from "context";
 import { removeFromWatchlater } from "services";

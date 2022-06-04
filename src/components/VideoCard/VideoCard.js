@@ -1,7 +1,7 @@
 import playIcon from "asset/playIcon.svg";
 import { Link } from "react-router-dom";
 import { getInitials } from "utils";
-import { VideoDropdownMenu } from "./VideoDropdownMenu";
+import { VideoDropdownMenu } from "components";
 
 export const VideoCard = ({ video }) => {
   const { _id, title, creator, views } = video;

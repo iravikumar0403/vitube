@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { VideoPlayer } from "components/VideoPlayer";
+import { VideoPlayer } from "components";
 import { useAuth, usePlaylist, useVideos } from "context";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";

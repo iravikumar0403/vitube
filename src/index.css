@@ -7,7 +7,6 @@ body {
   --secondary-text: #0d172c;
   --background-primary: #efefef;
   --background-secondary: #d6d6d6;
-  line-height: 1.2;
 }
 
 body.dark {

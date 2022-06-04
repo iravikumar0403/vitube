@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md";
-import { PlaylistVideoCard } from "components/PlaylistVideoCard";
+import { ConfirmDeleteModal, PlaylistVideoCard } from "components";
 import { useDocumentTitle } from "hooks";
 import { usePlaylist } from "context";
-import axios from "axios";
-import { ConfirmDeleteModal } from "components/ConfirmDeleteModal";
 import { removeVideoFromPlaylist } from "services";
 import { useTheme } from "context/theme-context";
+import axios from "axios";
 
 export const PlaylistDetails = () => {
   const [playlist, setPlaylist] = useState(null);

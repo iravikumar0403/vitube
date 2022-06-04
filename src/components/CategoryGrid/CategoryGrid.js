@@ -1,4 +1,4 @@
-import { VideoCard } from "./VideoCard";
+import { VideoCard } from "components";
 import { BiCaretLeftCircle, BiCaretRightCircle } from "react-icons/bi";
 import { useTheme } from "context/theme-context";
 
