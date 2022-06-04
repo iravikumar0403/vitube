@@ -124,6 +124,15 @@ nav {
   width: 30rem;
 }
 
+.playlist-listing {
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem;
+  justify-content: center;
+}
+
 .card.playlist .card-media {
   max-width: none;
   width: 50%;

@@ -22,7 +22,7 @@ export const Watchlater = () => {
     <div className="container">
       <div className="playlist-header">
         <div>
-          <h3>Watch later</h3> &#9679;
+          <h3 className="mx-2">Watch later</h3> &#9679;
           <p>
             {watchlater.length} <span>videos</span>
           </p>

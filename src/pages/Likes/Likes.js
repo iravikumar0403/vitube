@@ -22,7 +22,7 @@ export const Likes = () => {
     <div className="container">
       <div className="playlist-header">
         <div>
-          <h3>Liked videos</h3> &#9679;
+          <h3 className="ml-2">Liked videos</h3> &#9679;
           <p>
             {likes.length} <span>videos</span>
           </p>

@@ -37,7 +37,7 @@ export const WatchHistory = () => {
     <div className="container">
       <div className="playlist-header">
         <div>
-          <h3>Watch history</h3> &#9679;
+          <h3 className="ml-2">Watch history</h3> &#9679;
           <p>
             {history.length} <span>videos</span>
           </p>
