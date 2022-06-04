@@ -3,3 +3,5 @@ export { useCategories } from "./categories-context";
 export { useModal } from "./modal-context";
 export { usePlaylist } from "./playlist-context";
 export { useVideos } from "./videos-context";
+export { useTheme } from "./theme-context";
+export { useSidebar } from "./sidebar-context";

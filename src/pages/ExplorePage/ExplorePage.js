@@ -4,6 +4,10 @@ import { useCategories, useVideos } from "context";
 import { useDocumentTitle } from "hooks";
 import { filterByCategory } from "utils";
 
+//css imports
+import classes from "./ExplorePage.module.css";
+const { chips_container, chip, active } = classes;
+
 export const ExplorePage = () => {
   useDocumentTitle("Vitube - Explore");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -14,9 +18,9 @@ export const ExplorePage = () => {
 
   return (
     <Fragment>
-      <div className="chips-container">
+      <div className={chips_container}>
         <span
-          className={`chip ${selectedCategory === "All" ? "active" : ""}`}
+          className={`${chip} ${selectedCategory === "All" ? active : ""}`}
           onClick={() => setSelectedCategory("All")}
         >
           All
@@ -24,8 +28,8 @@ export const ExplorePage = () => {
         {categories.map((category) => (
           <span
             key={category._id}
-            className={`chip ${
-              category.slug === selectedCategory ? "active" : ""
+            className={`${chip} ${
+              category.slug === selectedCategory ? active : ""
             }`}
             onClick={() => setSelectedCategory(category.slug)}
           >

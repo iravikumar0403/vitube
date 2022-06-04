@@ -1,0 +1,19 @@
+.chips_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.chip {
+  border: 1px solid var(--primary-color);
+  padding: 0.5rem 2rem;
+  display: inline-block;
+  border-radius: 10rem;
+  cursor: pointer;
+}
+
+.chip.active {
+  background-color: var(--primary-color);
+}
