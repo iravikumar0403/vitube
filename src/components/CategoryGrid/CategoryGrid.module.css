@@ -1,0 +1,42 @@
+.category_section {
+  width: 1080px;
+  max-width: 90%;
+  padding: 2rem 1rem;
+  margin: auto;
+}
+
+.grid_slider {
+  position: relative;
+}
+
+.video_slider {
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  padding-bottom: 4.5rem;
+}
+
+.video_grid {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.slide_btn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.slide_btn.left {
+  left: -4rem;
+}
+
+.slide_btn.right {
+  right: -4rem;
+}
+
+@media (max-width: 768px) {
+  .slide_btn {
+    display: none;
+  }
+}

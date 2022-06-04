@@ -24,12 +24,6 @@ body.dark {
   background: radial-gradient(circle, var(--bg-gradient));
 }
 
-.container {
-  max-width: 1080px;
-  padding: 2rem 1rem;
-  margin: auto;
-}
-
 nav {
   position: sticky;
   background-color: var(--background-secondary);
@@ -77,18 +71,6 @@ nav {
 .card-footer .avatar {
   min-width: 3rem;
   align-self: flex-start;
-}
-
-.video-slider {
-  overflow-x: scroll;
-  scroll-behavior: smooth;
-  padding-bottom: 4.5rem;
-}
-
-.video-grid {
-  display: flex;
-  gap: 1rem;
-  padding-bottom: 1rem;
 }
 
 .listing-grid {
@@ -270,22 +252,6 @@ nav {
   background-color: var(--primary-color);
 }
 
-.grid-slider {
-  position: relative;
-}
-
-.slide-btn {
-  position: absolute;
-  top: 40%;
-  transform: translateY(-50%);
-}
-.slide-btn.left {
-  left: -4rem;
-}
-.slide-btn.right {
-  right: -4rem;
-}
-
 /* to-do: move these syles to component library utility */
 .align-center {
   align-items: center;
@@ -302,4 +268,10 @@ nav {
 .flex {
   display: flex;
   gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 75%;
+  }
 }
