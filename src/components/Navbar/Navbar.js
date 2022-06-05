@@ -37,12 +37,12 @@ export const Navbar = () => {
     <>
       <nav>
         <div className="nav-section left">
+          <li className="nav-logo nav-menu-item mr-2">
+            <Link to="/">
+              <img loading="lazy" src={logo} alt="logo" />
+            </Link>
+          </li>
           <ul className="nav-menu">
-            <li className="nav-logo nav-menu-item mr-2">
-              <Link to="/">
-                <img loading="lazy" src={logo} alt="logo" />
-              </Link>
-            </li>
             <li className="nav-menu-item ml-3 mr-2">
               <NavLink to="/">Home</NavLink>
             </li>
@@ -133,10 +133,97 @@ export const Navbar = () => {
             )}
           </li>
         </div>
-        <div className="nav-menu-resp" onClick={toggleSidebar}>
-          <i className="fas fa-bars"></i>
+        <div className="nav-menu-resp mt-2">
+          <div className="flex">
+            {user ? (
+              <div className="dropdown" ref={dropdownRef}>
+                <button
+                  className={`btn icon-only ${
+                    theme === "dark" ? "text-light" : ""
+                  }`}
+                  onClick={() => {
+                    setIsOpen((isOpen) => !isOpen);
+                  }}
+                >
+                  <i className="fs-2 fa-solid fa-user"></i>
+                </button>
+                <ul className={`dropdown-menu ${isOpen && "expanded"}`}>
+                  <li className="dropdown-item" onClick={handleLogoutClick}>
+                    Logout
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <li className="nav-menu-item mx-1">
+                <button
+                  className="btn primary"
+                  onClick={() =>
+                    navigate("/login", { state: { from: pathname } })
+                  }
+                >
+                  Login
+                </button>
+              </li>
+            )}
+            <li className="nav-menu-item mr-1" onClick={toggleTheme}>
+              {theme === "dark" ? (
+                <button
+                  className={`btn icon-only ${
+                    theme === "dark" ? "text-light" : ""
+                  }`}
+                >
+                  <BsFillSunFill className="fs-1" />
+                </button>
+              ) : (
+                <button
+                  className={`btn icon-only ${
+                    theme === "dark" ? "text-light" : ""
+                  }`}
+                >
+                  <BsFillMoonFill className="fs-1" />
+                </button>
+              )}
+            </li>
+            <li className="nav-menu-item mr-1">
+              <button className="btn" onClick={toggleSidebar}>
+                <i className="fas fa-bars"></i>
+              </button>
+            </li>
+          </div>
         </div>
       </nav>
+      <div className="search-resp">
+        <form onSubmit={handleSubmit}>
+          <div className="input-icon m-1">
+            <input
+              width={"700px"}
+              className="input"
+              type="text"
+              placeholder="Search"
+              value={query}
+              required
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            {query && (
+              <button
+                type="button"
+                className={`btn ${theme === "dark" ? "text-light" : ""}`}
+                onClick={handleClear}
+              >
+                <i className="fa-solid fa-x"></i>
+              </button>
+            )}
+            <button
+              type="submit"
+              className={`btn icon-only ${
+                theme === "dark" ? "text-light" : ""
+              }`}
+            >
+              <i className="fa fa-search"></i>
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 };

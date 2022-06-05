@@ -174,7 +174,6 @@ nav {
   justify-content: space-between;
 }
 
-/* to-do: move these syles to component library utility */
 .align-center {
   align-items: center;
 }
@@ -192,8 +191,16 @@ nav {
   gap: 0.5rem;
 }
 
+.search-resp {
+  display: none;
+}
+
 @media (max-width: 768px) {
   :root {
     font-size: 75%;
+  }
+
+  .search-resp {
+    display: block;
   }
 }
